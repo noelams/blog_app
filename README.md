@@ -48,6 +48,20 @@ Install the project dependencies using npm:
 npm install
 ```
 
+### Set Up Environment Variables
+
+Create a `.env` file in the root directory with the following:
+
+```env
+# Replace with your actual credentials
+  endpoint: process.env.REACT_APP_ENDPOINT 
+  platform: process.env.REACT_APP_PLATFORM 
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageId: process.env.REACT_APP_STORAGE_ID,
+  databaseId: process.env.REACT_APP_DATABASE_ID,
+  userCollectionId: process.env.REACT_APP_USER_COLLECTION_ID,
+  videoCollectionId: process.env.REACT_APP_VIDEO_COLLECTION_ID,
+
 ### Running the Project
 
 ```bash
