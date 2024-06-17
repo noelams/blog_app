@@ -61,6 +61,7 @@ Create a `.env` file in the root directory with the following:
   databaseId: process.env.REACT_APP_DATABASE_ID,
   userCollectionId: process.env.REACT_APP_USER_COLLECTION_ID,
   videoCollectionId: process.env.REACT_APP_VIDEO_COLLECTION_ID,
+```
 
 ### Running the Project
 
