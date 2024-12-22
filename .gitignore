@@ -15,7 +15,6 @@ web-build/
 *.p12
 *.key
 *.mobileprovision
-.vscode
 # Metro
 .metro-health-check*
 
@@ -30,7 +29,9 @@ yarn-error.*
 
 # local env files
 .env*.local
-.env
 
 # typescript
 *.tsbuildinfo
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat
