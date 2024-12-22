@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, router } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Text, ScrollView, Dimensions, Alert, Image } from "react-native";
 
@@ -9,6 +9,7 @@ import { getCurrentUser, signIn } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignIn = () => {
+  const router = useRouter();
   const { setUser, setIsLogged } = useGlobalContext();
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -19,6 +20,7 @@ const SignIn = () => {
   const submit = async () => {
     if (form.email === "" || form.password === "") {
       Alert.alert("Error", "Please fill in all fields Correctly");
+      return;
     }
 
     setSubmitting(true);
@@ -32,7 +34,8 @@ const SignIn = () => {
       Alert.alert("Success", "User signed in successfully");
       router.replace("/home");
     } catch (error) {
-      Alert.alert("Error", error.message);
+      console.error(error); // Log error for debugging
+      Alert.alert("Error", error.message || "An unexpected error occurred");
     } finally {
       setSubmitting(false);
     }
@@ -50,7 +53,7 @@ const SignIn = () => {
           <Image
             source={images.logo}
             resizeMode="contain"
-            className="w-[115px] h-[34px]"
+            style={{ width: 115, height: 34 }}
           />
 
           <Text className="text-2xl font-semibold text-white mt-10 font-psemibold">
@@ -70,6 +73,7 @@ const SignIn = () => {
             value={form.password}
             handleChangeText={(e) => setForm({ ...form, password: e })}
             otherStyles="mt-7"
+            keyboardType="default"
           />
 
           <CustomButton
